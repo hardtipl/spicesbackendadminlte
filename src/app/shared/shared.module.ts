@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { SidenavComponent } from './sidenav/sidenav.component';
-
+import {MatTabsModule} from '@angular/material/tabs';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -22,6 +22,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MatIconModule,
     MatDividerModule,
     MatListModule,
+    MatTabsModule,
   ],
   exports: [
     SidebarComponent,  
@@ -32,6 +33,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MatIconModule,
     MatDividerModule,
     MatListModule,
+    MatTabsModule,
   ]
 })
 export class SharedModule { }
