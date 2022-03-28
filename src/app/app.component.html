@@ -1,0 +1,40 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer class="navside" mode="side" [opened]="sideBarOpen"><app-sidebar></app-sidebar></mat-drawer>
+    
+    <mat-drawer-content>
+      <p>
+        <mat-toolbar>
+          <button mat-icon-button class="example-icon" (click)="sideBarToggler()" aria-label="Example icon-button with menu icon">
+           <mat-icon >menu</mat-icon>
+         </button>
+         <span>My App</span>
+         <span class="example-spacer"></span>
+         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+           <mat-icon>favorite</mat-icon>
+         </button>
+         <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+        <!-- <li> -->
+          <button
+            mat-button
+            [matMenuTriggerFor]="menu"
+           class="">    
+    
+            Choose Action<mat-icon>keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
+            </button>
+          </mat-menu>
+        <!-- </li> -->
+       </mat-toolbar>
+       </p>
+       <router-outlet></router-outlet>
+       <!-- <h1>fddsdddvdfdf</h1> -->
+    </mat-drawer-content>
+    
+    
+  </mat-drawer-container>

@@ -1,0 +1,54 @@
+
+<!-- <mat-drawer-container> -->
+    <!-- <mat-drawer mode="side" [opened]="sideBarOpen"> -->
+      <!-- <mat-drawer mode="side" opened="true"> --
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-sidebar (toggleSidebarForMe)="sideBarToggler()"></app-sidebar>
+      <!-- <router-outlet></router-outlet> --
+    </mat-drawer-content>
+  </mat-drawer-container> -->
+  <mat-drawer-container class="example-container">
+    <mat-drawer class="navside" mode="side" [opened]="sideBarOpen"><app-sidebar></app-sidebar></mat-drawer>
+    <mat-drawer-content>
+      <p>
+        <mat-toolbar>
+          <button mat-icon-button class="example-icon" (click)="sideBarToggler()" aria-label="Example icon-button with menu icon">
+           <mat-icon >menu</mat-icon>
+         </button>
+         <span>My App</span>
+         <span class="example-spacer"></span>
+         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+           <mat-icon>favorite</mat-icon>
+         </button>
+         <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+       </mat-toolbar>
+       </p>
+       <!-- <router-outlet></router-outlet> -->
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+
+  <!-- <p>
+    <mat-drawer-container class="example-container">
+      <mat-drawer mode="side" [opened]="sideBarOpen"><app-sidebar></app-sidebar></mat-drawer>
+    <mat-drawer-content>
+    <mat-toolbar>
+     <button mat-icon-button class="example-icon" (click)="sideBarToggler()" aria-label="Example icon-button with menu icon">
+      <mat-icon >menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+     <mat-icon>share</mat-icon>
+   </button>
+  </mat-toolbar>
+</mat-drawer-content>
+</mat-drawer-container>
+  </p> -->
