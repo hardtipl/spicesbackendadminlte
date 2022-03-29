@@ -9,52 +9,52 @@
     </div>
     <mat-tab-group>
         <mat-tab label="Add"> 
+            <form [formGroup]="productform" (ngSubmit)="submit()"enctype="multipart/form-data">
+            <!-- <div class="row"> -->
+            <div class="col-md-6">
+            <label>Product Title</label>
+            <input type="text" formControlName="productname" placeholder="Please Enter Product Name">
+            <span class="text-danger" *ngIf="controlsofall.productname && controlsofall.productname.touched">
+                Name is required
+            </span>
+            <!-- <div *ngIf="controlsofall.producttitle.touched">something is invalid</div> -->
+            </div>
+            <!-- </div> -->
+            <!-- <div class="row"> -->
+            <div class="col-md-6">
+            <label>Product Short Description</label>
+            <input type="text" formControlName="productshortdescription" placeholder="Please Enter Product Short Description">
+            </div>
+            <!-- </div> -->
+            <!-- <div class="row"> -->
+            <div class="col-md-6">
+            <label>Product Long Description</label>
+            <textarea formControlName="productlongdescription" placeholder="Please Enter Product Long Description"></textarea>
+            </div>
+            <!-- </div> -->
+            <!-- <div class="row"> -->
+            <div class="col-md-6">
+            <label>Product Bestseller</label>
+            <input type="text" formControlName="bestseller" placeholder="Please Enter Product Name">
+            </div>
+            <!-- </div> -->
+            <div class="col-md-6">
+            <label>Product Instock</label>
+            <input type="text" formControlName="instock" placeholder="Please Enter Product Name">
+            </div>
+            <div class="col-md-6">
+            <label>Product Status</label>
+            <input type="text" formControlName="status" placeholder="Please Enter Product Name">
+            </div>
+            <div class="col-md-6">
+            <label>Product Image</label>
+            <input type="file" formControlName="productimage" (change)="onSelectFile($event)" placeholder="Please Upload Product Image">
+            </div>
+            <button type="submit">Add Product</button>
+            </form>    
         </mat-tab>
         <mat-tab label="Update/Modify"> Content 2 </mat-tab>
         <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
     </mat-tab-group>
     
-    <form [formGroup]="productform" (ngSubmit)="submit()"enctype="multipart/form-data">
-    <!-- <div class="row"> -->
-    <div class="col-md-6">
-    <label>Product Title</label>
-    <input type="text" formControlName="producttitle" placeholder="Please Enter Product Name">
-    <!-- <span class="text-danger" *ngIf="producttitle && producttitle.touched">
-        Name is required
-    </span> -->
-    <!-- <div *ngIf="controlsofall.producttitle.touched">something is invalid</div> -->
-    </div>
-    <!-- </div> -->
-    <!-- <div class="row"> -->
-    <div class="col-md-6">
-    <label>Product Short Description</label>
-    <input type="text" formControlName="productshortdesc" placeholder="Please Enter Product Short Description">
-    </div>
-    <!-- </div> -->
-    <!-- <div class="row"> -->
-    <div class="col-md-6">
-    <label>Product Long Description</label>
-    <textarea formControlName="productlongdesc" placeholder="Please Enter Product Long Description"></textarea>
-    </div>
-    <!-- </div> -->
-    <!-- <div class="row"> -->
-    <div class="col-md-6">
-    <label>Product Bestseller</label>
-    <input type="text" formControlName="bestseller" placeholder="Please Enter Product Name">
-    </div>
-    <!-- </div> -->
-    <div class="col-md-6">
-    <label>Product Instock</label>
-    <input type="text" formControlName="instock" placeholder="Please Enter Product Name">
-    </div>
-    <div class="col-md-6">
-    <label>Product Status</label>
-    <input type="text" formControlName="status" placeholder="Please Enter Product Name">
-    </div>
-    <div class="col-md-6">
-    <label>Product Image</label>
-    <input type="file" formControlName="productimage" placeholder="Please Upload Product Image">
-    </div>
-    <button type="submit">Add Product</button>
-    </form>    
 </ng-container>
