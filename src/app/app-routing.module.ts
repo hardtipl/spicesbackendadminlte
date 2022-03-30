@@ -5,13 +5,16 @@ import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   {
-    path:'',component:ProductComponent
+    path:'',loadChildren:()=>import('./admin/admin.module').then(login=>login.AdminModule)
+  },
+  {
+    path:'admin',loadChildren:()=>import('./admincontent/admincontent.module').then(loggedin=>loggedin.AdmincontentModule)
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  // imports: [RouterModule.forRoot(routes, { useHash: true })],
+  // imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

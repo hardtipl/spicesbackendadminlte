@@ -9,10 +9,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     SidebarComponent,
-    SidenavComponent
+    SidenavComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +29,7 @@ import {MatTabsModule} from '@angular/material/tabs';
   exports: [
     SidebarComponent,  
     SidenavComponent  ,
+
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
@@ -34,6 +37,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatDividerModule,
     MatListModule,
     MatTabsModule,
+    SidebarComponent,
+    SidenavComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

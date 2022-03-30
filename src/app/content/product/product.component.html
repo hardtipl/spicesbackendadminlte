@@ -14,6 +14,7 @@
                     <!-- <div class="col-md-6 offset-md-3 col-12"> -->
 
                     <form [formGroup]="productform" (ngSubmit)="submit()" enctype="multipart/form-data">
+                        <div class="col-md-6">
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Product Title :</label>
                             <div class="col-sm-9">
@@ -25,6 +26,8 @@
                                 </span>
                             </div>
                         </div>
+                        </div>
+                        <div class="col-md-6">
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label"> Product Short Description
                                 :</label>
@@ -37,6 +40,7 @@
                                 </span>
                             </div>
                         </div>
+                    </div>
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Product Long Description:</label>
                             <div class="col-sm-9">
@@ -48,6 +52,7 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="col-md-6">
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Product Bestseller :</label>
                             <div class="col-sm-9">
@@ -56,6 +61,7 @@
                                     <option value="0">No</option>
                                 </select>
                             </div>
+                        </div>
                         </div>
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Product Instock :</label>
@@ -79,7 +85,7 @@
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Product Option :</label>
                             <div class="col-sm-9">
                                 <select formControlName="status" class="form-control">
-                                    <option value=" ">--select any--</option>
+                                    <option value="0">--select any--</option>
                                     <option *ngFor="let options of avilableproducoptions" value="{{options.id}}">
                                         {{options.vname}}</option>
                                 </select>
@@ -90,19 +96,20 @@
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Product Brand :</label>
                             <div class="col-sm-9">
                                 <select formControlName="status" class="form-control">
-                                    <option >--select any--</option>
+                                    <option value="0">--select any--</option>
                                     <option *ngFor="let brands of avilablebrads" value="{{brands.id}}">
                                         {{brands.vbrandName}}</option>
                                 </select>
                             </div>
                         </div>
-                   
+                        <div class="card-footer text-center">
+                        <button type="submit" class="btn btn-primary">Add Product</button>
+                        </div>
                     </form>
                     <!-- </div> -->
                 </div>
             </div>
 
-            <button type="submit">Add Product</button>
             <!-- </form> -->
             <!-- </div>   -->
 

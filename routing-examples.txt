@@ -1,0 +1,26 @@
+const routes: Routes = [
+    {
+      path:'',component:DashboardComponent,childre
+    },
+    {
+      path:'/brand',component:BrandComponent
+    },
+    {
+      path:'/product',component:ProductComponent
+    },
+    {
+      path:'/customer',component:CustomerComponent
+    }
+  ];
+
+
+in one is main component inside that routing is done
+
+  {
+    path:'',  component:DashboardComponent,
+    children:[
+     { path:'/brand',component:BrandComponent},
+      {path:'/product',component:ProductComponent},
+      {path:'/customer',component:CustomerComponent}
+    ]
+  }
