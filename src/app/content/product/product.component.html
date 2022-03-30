@@ -1,106 +1,107 @@
 <ng-container>
     <div class="container-fluid page">
-        <!-- <div class="d-flex page__box p-3 mt-2">Product</div> -->
-    
+        <div class="d-flex page__box p-3 mt-2">Product</div>
+        <div class="page__content shadow p-3 position-relative">
+            <div class="page__content-data position-absolute text-center">
+                Dashboard Content Goes Here
+            </div>
+        </div>
+    </div>
     <mat-tab-group>
-        <mat-tab label="Add"> 
-            <!-- <div class="card-body"> -->
+        <mat-tab label="Add">
+            <div class="card-body">
                 <div class="row">
-                    <!-- <div class="col-md-6 offset-md-3 col-12">  -->
-                      
-                        <form [formGroup]="productform" (ngSubmit)="submit()"enctype="multipart/form-data">
+                    <div class="col-md-6 offset-md-3 col-12">
+
+                        <form [formGroup]="productform" (ngSubmit)="submit()" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Product Title :</label>
+
                                 <div class="col-sm-9">
-                                    <input type="text"  class="form-control" formControlName="productname" placeholder="Please Enter Product Name">
-                                    <span class="text-danger" *ngIf="controlsofall.productname && controlsofall.productname.touched">
-                                        Name is required
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-3 col-form-label">Product Title :</label>
-                                
-                                <div class="col-sm-9">
-                                    <!-- <input type="text" class="form-control" name="formdayitva" #formdayitva="ngModel" required minlength="3" ngModel/> -->
-                                    <input type="text"  class="form-control" formControlName="productname" placeholder="Please Enter Product Name">
-                                    <span class="text-danger" *ngIf="controlsofall.productname && controlsofall.productname.touched">
-                                        Name is required
-                                    </span>
+                                    <input type="text" class="form-control" name="formdayitva" #formdayitva="ngModel"
+                                        required minlength="3" ngModel />
+
                                 </div>
                             </div>
 
-                             <div class="form-group">
+                            <div class="form-group">
                                 <div class="row">
                                     <label for="inputEmail3" class="col-sm-3 col-form-label">Dayitva :</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" name="formdayitva" #formdayitva="ngModel" required minlength="3" ngModel/>
-                                        <span *ngIf="formdayitva && formdayitva.invalid && formdayitva.touched" style="color: red;">Please Enter Dayitav Name</span> 
+                                        <input type="text" class="form-control" name="formdayitva"
+                                            #formdayitva="ngModel" required minlength="3" ngModel />
+                                        <span *ngIf="formdayitva && formdayitva.invalid && formdayitva.touched"
+                                            style="color: red;">Please Enter Dayitav Name</span>
                                         <!-- <span *ngIf="!formdayitva?.valid && (formdayitva?.dirty || formdayitva?.touched)" style="color: red;">Please Enter Dayitav</span> -->
                                         <!-- <div *ngIf="formdayitva.errors.required">
                                             First Name is required
                                          </div> -->
                                     </div>
                                     <div class="col-md-12 text-center mt-3">
-                                        <!-- <button type="submit" [disabled]="dayitvaForm.invalid" class="btn btn-primary">Add</button> -->
+                                        <!-- <button type="submit" [disabled]="dayitvaForm.invalid" -->
+                                            <!-- class="btn btn-primary">Add</button> -->
                                     </div>
                                 </div>
                                 <!-- <label for="inputEmail3" class="col-sm-3  col-form-label">Field1:</label> -->
                             </div>
                         </form>
-                    <!-- </div> -->
+                    </div>
                 </div>
-            <!-- </div> -->
-            <form [formGroup]="productform" (ngSubmit)="submit()" enctype="multipart/form-data">
-                <div class="row">
-                        <div class="form-group row">
+            </div>
+            <!-- <form [formGroup]="productform" (ngSubmit)="submit()" enctype="multipart/form-data"> -->
+                <div class="form-group">
+                    <div class="row">
                         <div class="col-md-6">
                             <label>Product Title</label>
                             <input type="text" formControlName="productname" placeholder="Please Enter Product Name">
-                            <span class="text-danger" *ngIf="controlsofall.productname && controlsofall.productname.touched">
+                            <span class="text-danger"
+                                *ngIf="controlsofall.productname && controlsofall.productname.touched">
                                 Name is required
                             </span>
                             <!-- <div *ngIf="controlsofall.producttitle.touched">something is invalid</div> -->
                         </div>
                     </div>
                 </div>
-            <!-- <div class="row"> -->
-            <div class="col-md-6">
-            <label>Product Short Description</label>
-            <input type="text" formControlName="productshortdescription" placeholder="Please Enter Product Short Description">
-            </div>
-            <!-- </div> -->
-            <!-- <div class="row"> -->
-            <div class="col-md-6">
-            <label>Product Long Description</label>
-            <textarea formControlName="productlongdescription" placeholder="Please Enter Product Long Description"></textarea>
-            </div>
-            <!-- </div> -->
-            <!-- <div class="row"> -->
-            <div class="col-md-6">
-            <label>Product Bestseller</label>
-            <input type="text" formControlName="bestseller" placeholder="Please Enter Product Name">
-            </div>
-            <!-- </div> -->
-            <div class="col-md-6">
-            <label>Product Instock</label>
-            <input type="text" formControlName="instock" placeholder="Please Enter Product Name">
-            </div>
-            <div class="col-md-6">
-            <label>Product Status</label>
-            <input type="text" formControlName="status" placeholder="Please Enter Product Name">
-            </div>
-            <div class="col-md-6">
-            <label>Product Image</label>
-            <input type="file" formControlName="productimage" (change)="onSelectFile($event)" placeholder="Please Upload Product Image">
-            </div>
-            <button type="submit">Add Product</button>
-            </form>  
+                <!-- <div class="row"> -->
+                <div class="col-md-6">
+                    <label>Product Short Description</label>
+                    <input type="text" formControlName="productshortdescription"
+                        placeholder="Please Enter Product Short Description">
+                </div>
+                <!-- </div> -->
+                <!-- <div class="row"> -->
+                <div class="col-md-6">
+                    <label>Product Long Description</label>
+                    <textarea formControlName="productlongdescription"
+                        placeholder="Please Enter Product Long Description"></textarea>
+                </div>
+                <!-- </div> -->
+                <!-- <div class="row"> -->
+                <div class="col-md-6">
+                    <label>Product Bestseller</label>
+                    <input type="text" formControlName="bestseller" placeholder="Please Enter Product Name">
+                </div>
+                <!-- </div> -->
+                <div class="col-md-6">
+                    <label>Product Instock</label>
+                    <input type="text" formControlName="instock" placeholder="Please Enter Product Name">
+                </div>
+                <div class="col-md-6">
+                    <label>Product Status</label>
+                    <input type="text" formControlName="status" placeholder="Please Enter Product Name">
+                </div>
+                <div class="col-md-6">
+                    <label>Product Image</label>
+                    <input type="file" formControlName="productimage" (change)="onSelectFile($event)"
+                        placeholder="Please Upload Product Image">
+                </div>
+                <button type="submit">Add Product</button>
+            <!-- </form> -->
             <!-- </div>   -->
-            
+
         </mat-tab>
         <mat-tab label="Update/Modify"> Content 2 </mat-tab>
         <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
     </mat-tab-group>
-</div>
+
 </ng-container>

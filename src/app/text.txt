@@ -1,0 +1,159 @@
+<div class="card">
+    <div class="card-body">
+
+        <form #praform="ngForm" (ngSubmit)="addpra(praform)">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">नाम:</label>
+                        <div class="col-sm-9">
+                            <input type="text" placeholder="Enter Your Name" class="form-control" name="fullname"
+                                minlength="3" #fullname="ngModel" required ngModel />
+                            <span *ngIf="fullname && fullname.invalid && fullname.touched" style="color: red;">Please
+                                Enter Name</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">भ्रमणध्वनी:</label>
+                        <div class="col-sm-9">
+                            <input type="text" maxlength="11" minlength="10" placeholder="Enter Your Mobile Number"
+                                class="form-control" name="phone"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                required #phone="ngModel" ngModel />
+                            <span *ngIf="phone && phone.invalid && phone.touched" style="color: red;">Please Enter
+                                Contact Number</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">भ्रमणध्वनी 2 :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" maxlength="11" placeholder="Enter Your Optional Contact Number" minlength="10" name="mobileno2"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                ngModel />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">ईमेल:</label>
+                        <div class="col-sm-9">
+                            <input type="email" placeholder="Enter Your Email Address" class="form-control" name="email"
+                                 #email="ngModel" ngModel />
+                            <span *ngIf="email && email.invalid && email.touched" style="color: red;">Please Enter
+                                Email</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Department:</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="department" required #department="ngModel" ngModel>
+                                <option value="">--Select Any--</option>
+                                <option *ngFor=" let department of dep" value="{{department.departmentId}}">
+                                    {{department.departmentName}}</option>
+                            </select>
+                            <span *ngIf="department && department.invalid && department.touched"
+                                style="color: red;">Please Select Department</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">विभाग:</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="vibhag" #vibhags="ngModel"
+                                (change)="onclickvibhag($event)" required ngModel>
+                                <option value="">--Select Any--</option>
+                                <option *ngFor="let cities of vibhag" value="{{cities.vibhagId}}">{{cities.vibhag}}
+                                </option>
+
+                            </select>
+                            <span *ngIf="vibhags && vibhags.invalid && vibhags.touched" style="color: red;">Please
+                                Select Vibhag</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">भाग:</label>
+                        <div class="col-sm-9">
+
+                            <select class="form-control" id="#" name="bhag" required #bhag="ngModel" ngModel>
+                                <option value="">--Select Any--</option>
+                                <option *ngFor="let cities of filterbhag" value="{{cities.bhagId}}">{{cities.bhag}}
+                                </option>
+                            </select>
+                            <span *ngIf="bhag && bhag.invalid && bhag.touched" style="color: red;">Please Select
+                                Bhag</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Assign Role</label>
+                        <div class="col-sm-9">
+
+                            <select class="form-control" name="roledrop" required #roledrop="ngModel" ngModel>
+                                <option value="">--Select Any--</option>
+                                <option *ngFor="let cities of roleslisting" value="{{cities.rolesId}}">{{cities.roleName}}
+                                </option>
+                            </select>
+                            <span *ngIf="roledrop && roledrop.invalid && roledrop.touched" style="color: red;">Please
+                                Select Role</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Blood Group:</label>
+                        <div class="col-sm-9">
+                            <input type="text" placeholder="Enter Your Blood Group" class="form-control"
+                                name="bloodgroup" ngModel minlength="1" maxlength="5" onkeypress= />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="checkbox" name="Prabadhak" [ngModel]="true" (change)="onCheckboxChange($event,praform)"  #check="ngModel"/>
+                        <label class="ml-3 text-right col-form-label">Prabadhak </label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="checkbox" name="ischalak" ngModel (change)="onCheckboxChange($event,praform)"  #check="ngModel" />
+                        <label class="ml-3 text-right col-form-label">Chalak</label>
+                        
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="card-footer text-center">
+                <button [disabled]="praform.invalid" type="submit" class="btn btn-primary">Submit </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+to get the the value html ehcih looks classic
+<section class="section">
+    <app-pview-title></app-pview-title>
+
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-lg-12">
+                <app-pview-data></app-pview-data>
+            </div>
+        </div>
+    </div>
+</section>
