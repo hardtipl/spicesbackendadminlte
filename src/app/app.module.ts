@@ -9,12 +9,14 @@ import { TestComponent } from './test/test.component';
 import { ProductComponent } from './content/product/product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrandComponent } from './brand/brand.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     ProductComponent,
+    BrandComponent,
     
   ],
   imports: [
