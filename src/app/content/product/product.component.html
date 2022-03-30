@@ -1,106 +1,113 @@
 <ng-container>
-    <div class="container-fluid page">
+    <!-- <div class="container-fluid page">
         <div class="d-flex page__box p-3 mt-2">Product</div>
         <div class="page__content shadow p-3 position-relative">
             <div class="page__content-data position-absolute text-center">
                 Dashboard Content Goes Here
             </div>
         </div>
-    </div>
+    </div> -->
     <mat-tab-group>
         <mat-tab label="Add">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-6 offset-md-3 col-12">
+                    <!-- <div class="col-md-6 offset-md-3 col-12"> -->
 
-                        <form [formGroup]="productform" (ngSubmit)="submit()" enctype="multipart/form-data">
-                            <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-3 col-form-label">Product Title :</label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="formdayitva" #formdayitva="ngModel"
-                                        required minlength="3" ngModel />
-
-                                </div>
+                    <form [formGroup]="productform" (ngSubmit)="submit()" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Product Title :</label>
+                            <div class="col-sm-9">
+                                <input type="text" formControlName="productname" class="form-control"
+                                    placeholder="Please Enter Product Name">
+                                <span class="text-danger"
+                                    *ngIf="controlsofall.productname && controlsofall.productname.touched &&controlsofall.productname.errors">
+                                    There is Some Error in Product title
+                                </span>
                             </div>
-
-                            <div class="form-group">
-                                <div class="row">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Dayitva :</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" name="formdayitva"
-                                            #formdayitva="ngModel" required minlength="3" ngModel />
-                                        <span *ngIf="formdayitva && formdayitva.invalid && formdayitva.touched"
-                                            style="color: red;">Please Enter Dayitav Name</span>
-                                        <!-- <span *ngIf="!formdayitva?.valid && (formdayitva?.dirty || formdayitva?.touched)" style="color: red;">Please Enter Dayitav</span> -->
-                                        <!-- <div *ngIf="formdayitva.errors.required">
-                                            First Name is required
-                                         </div> -->
-                                    </div>
-                                    <div class="col-md-12 text-center mt-3">
-                                        <!-- <button type="submit" [disabled]="dayitvaForm.invalid" -->
-                                            <!-- class="btn btn-primary">Add</button> -->
-                                    </div>
-                                </div>
-                                <!-- <label for="inputEmail3" class="col-sm-3  col-form-label">Field1:</label> -->
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label"> Product Short Description
+                                :</label>
+                            <div class="col-sm-9">
+                                <input type="text" formControlName="productshortdescription" class="form-control"
+                                    placeholder="Please Enter Product Name">
+                                <span class="text-danger"
+                                    *ngIf="controlsofall.productshortdescription && controlsofall.productshortdescription.touched &&controlsofall.productshortdescription.errors">
+                                    There is Some Error in Product title
+                                </span>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Product Long Description:</label>
+                            <div class="col-sm-9">
+                                <textarea formControlName="productlongdescription" class="form-control"
+                                    placeholder="Please Enter Product Long Description"></textarea>
+                                <span class="text-danger"
+                                    *ngIf="controlsofall.productname && controlsofall.productname.touched &&controlsofall.productname.errors">
+                                    There is Some Error in Product title
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Product Bestseller :</label>
+                            <div class="col-sm-9">
+                                <select formControlName="bestseller" class="form-control">
+                                    <option value="1" >Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Product Instock :</label>
+                            <div class="col-sm-9">
+                                <select formControlName="instock" class="form-control">
+                                    <option value="1" >Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Product Status :</label>
+                            <div class="col-sm-9">
+                                <select formControlName="status" class="form-control">
+                                    <option value="Active" >Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Product Option :</label>
+                            <div class="col-sm-9">
+                                <select formControlName="status" class="form-control">
+                                    <option value=" ">--select any--</option>
+                                    <option *ngFor="let options of avilableproducoptions" value="{{options.id}}">
+                                        {{options.vname}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- avilablebrads -->
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Product Brand :</label>
+                            <div class="col-sm-9">
+                                <select formControlName="status" class="form-control">
+                                    <option >--select any--</option>
+                                    <option *ngFor="let brands of avilablebrads" value="{{brands.id}}">
+                                        {{brands.vbrandName}}</option>
+                                </select>
+                            </div>
+                        </div>
+                   
+                    </form>
+                    <!-- </div> -->
                 </div>
             </div>
-            <!-- <form [formGroup]="productform" (ngSubmit)="submit()" enctype="multipart/form-data"> -->
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Product Title</label>
-                            <input type="text" formControlName="productname" placeholder="Please Enter Product Name">
-                            <span class="text-danger"
-                                *ngIf="controlsofall.productname && controlsofall.productname.touched">
-                                Name is required
-                            </span>
-                            <!-- <div *ngIf="controlsofall.producttitle.touched">something is invalid</div> -->
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="row"> -->
-                <div class="col-md-6">
-                    <label>Product Short Description</label>
-                    <input type="text" formControlName="productshortdescription"
-                        placeholder="Please Enter Product Short Description">
-                </div>
-                <!-- </div> -->
-                <!-- <div class="row"> -->
-                <div class="col-md-6">
-                    <label>Product Long Description</label>
-                    <textarea formControlName="productlongdescription"
-                        placeholder="Please Enter Product Long Description"></textarea>
-                </div>
-                <!-- </div> -->
-                <!-- <div class="row"> -->
-                <div class="col-md-6">
-                    <label>Product Bestseller</label>
-                    <input type="text" formControlName="bestseller" placeholder="Please Enter Product Name">
-                </div>
-                <!-- </div> -->
-                <div class="col-md-6">
-                    <label>Product Instock</label>
-                    <input type="text" formControlName="instock" placeholder="Please Enter Product Name">
-                </div>
-                <div class="col-md-6">
-                    <label>Product Status</label>
-                    <input type="text" formControlName="status" placeholder="Please Enter Product Name">
-                </div>
-                <div class="col-md-6">
-                    <label>Product Image</label>
-                    <input type="file" formControlName="productimage" (change)="onSelectFile($event)"
-                        placeholder="Please Upload Product Image">
-                </div>
-                <button type="submit">Add Product</button>
+
+            <button type="submit">Add Product</button>
             <!-- </form> -->
             <!-- </div>   -->
 
         </mat-tab>
-        <mat-tab label="Update/Modify"> Content 2 </mat-tab>
+        <!-- <mat-tab label="Update/Modify"> Content 2 </mat-tab> -->
         <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
     </mat-tab-group>
 

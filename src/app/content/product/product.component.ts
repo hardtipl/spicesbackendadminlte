@@ -10,16 +10,19 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
 productform:any
   uploadedingfile: any;
+  avilableproducoptions: any;
+  avilablebrads:any
   constructor(private fb:FormBuilder,private product:ProductService) { 
     this.productform=this.fb.group({
     productname:['', [Validators.required]],
     productshortdescription:['', [Validators.required]],
     productlongdescription:['', [Validators.required]],
-    bestseller:['', [Validators.required]],
-    instock:['', [Validators.required]],
-    status:['', [Validators.required]],
+    bestseller:['1', [Validators.required]],
+    instock:['1', [Validators.required]],
+    status:['Active', [Validators.required]],
     productimage:['', [Validators.required]],
-
+    brandID:[''],
+    iproductOption_Id:['']
     });
   }
   get controlsofall(){
@@ -27,6 +30,12 @@ productform:any
 }
 // get f() { return this.productform.controls; }
   ngOnInit(): void {
+    this.product.productoption().subscribe((data:any)=>{
+      this.avilableproducoptions=data.Message
+    })
+    this.product.productbrnad().subscribe((data:any)=>{
+      this.avilablebrads=data.Message
+    })
   }
   submit(){
     console.log(this.productform.value)

@@ -19,4 +19,10 @@ export class ProductService {
     return this.http.post(`${this.url}/Star`,StarData)
     
   }
+  productoption(){
+    return this.http.get(`http://localhost:4500/api/admin/producoptions`)
+  }
+  productbrnad(){
+    return this.http.get(`http://localhost:4500/api/admin/brand/getall`)
+  }
 }
