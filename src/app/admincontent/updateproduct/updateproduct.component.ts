@@ -3,12 +3,13 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  selector: 'app-updateproduct',
+  templateUrl: './updateproduct.component.html',
+  styleUrls: ['./updateproduct.component.css']
 })
-export class ProductComponent implements OnInit {
-productform:any
+export class UpdateproductComponent implements OnInit {
+
+  productform:any
   uploadedingfile: any;
   avilableproducoptions: any;
   avilablebrads:any
@@ -37,6 +38,16 @@ productform:any
       this.avilablebrads=data.Message
     })
   }
+  sendbrnad(brand:any){
+    this.productform.patchValue({
+      brandID:brand.value
+    })
+  }
+  productoption(prod_option:any){
+    this.productform.patchValue({
+      brandID:prod_option.value
+    })
+  }
   submit(){
     console.log(this.productform.value)
     // console.log(this.productform.value.producttitle)
@@ -57,7 +68,8 @@ productform:any
     sendingdata.append('bestseller', this.productform.value.bestseller)
     sendingdata.append('instock', this.productform.value.instock)
     sendingdata.append('status', this.productform.value.status)
-    // console.log(sendingdata);
+    console.log(sendingdata);
+    console.log("angular sending data",this.productform.value);
     this.product.addproduct(this.productform.value).subscribe((data:any)=>{
     console.log(data);
     alert("resp")
@@ -68,4 +80,5 @@ productform:any
   onSelectFile(data:any){
   this.uploadedingfile=data.target.files[0]
   }
+
 }
