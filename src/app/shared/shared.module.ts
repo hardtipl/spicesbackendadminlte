@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     SidebarComponent,
@@ -17,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
+    RouterModule,
     CommonModule,
     MatSidenavModule,
     MatToolbarModule,

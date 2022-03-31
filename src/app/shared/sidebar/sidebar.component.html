@@ -1,8 +1,8 @@
-<mat-nav-list>
+<!-- <mat-nav-list> -->
     <!-- <div class="logo py-4"> -->
       <!-- <img src="./assets/logo.svg" alt="Company Logo" /> -->
     <!-- </div> -->
-    <mat-divider></mat-divider>
+    <!-- <mat-divider></mat-divider>
     <h2 matSubheader class="mt-2" routerLink="">APPLICATIONS</h2>
   
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/product">
@@ -22,7 +22,7 @@
     <a mat-list-item> <mat-icon>edit</mat-icon> Link 4 </a>
     <a mat-list-item> <mat-icon>edit</mat-icon> Link 5 </a>
     <a mat-list-item> <mat-icon>edit</mat-icon> Link 6 </a>
-</mat-nav-list>
+</mat-nav-list> -->
 <!-- <div class="wrapper"> -->
   <!-- Sidebar -
   <nav id="sidebar">
@@ -73,3 +73,67 @@
   </nav>
 
 </div>-->
+
+
+
+
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+   
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Product
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a  class="nav-link active" routerLink="product">
+                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                  <p>Add Product</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="updateproduct" class="nav-link">
+                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                  <p>Update Product</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <!-- <a routerLink="updateproduct" class="nav-link"> -->
+              <a class="nav-link" routerLink="customer">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Widgets
+                <!--  <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <!-- <a routerLink="updateproduct" class="nav-link"> -->
+              <a class="nav-link" routerLink="brand">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Brand
+                <!--  <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+         
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
