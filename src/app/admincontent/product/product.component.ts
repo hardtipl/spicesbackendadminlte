@@ -22,12 +22,12 @@ productform:any
     status:['Active', [Validators.required]],
     productimage:['', [Validators.required]],
     brandID:[''],
+    fdiscountPrice:['',[Validators.required]],
+    fprice:['',[Validators.required]],
     iproductOption_Id:['']
     });
   }
   get controlsofall(){
-    console.log("changein the status when the happened",this.productform.value.status)
-    console.log("changein the indtock when the happened",this.productform.value.instock)
   return this.productform.controls;
 }
 // get f() { return this.productform.controls; }
@@ -81,11 +81,11 @@ productform:any
     sendingdata.append('status', this.productform.value.status)
     console.log(sendingdata);
     // console.log("angular sending data",this.productform.value);
-  //   this.product.addproduct(this.productform.value).subscribe((data:any)=>{
-  //   console.log(data);
-  //   alert("resp")
+    this.product.addproduct(this.productform.value).subscribe((data:any)=>{
+    console.log(data);
+    // alert("resp")
     
-  // })
+  })
     // const productdata
   }
   onSelectFile(data:any){

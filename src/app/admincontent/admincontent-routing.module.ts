@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductComponent } from './product/product.component';
-import { CustomerComponent } from './customer/customer.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrnadComponent } from './brnad/brnad.component';
+import { StockComponent } from './stock/stock.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     children:[
      { path:'brand',component:BrnadComponent},
       {path:'product',component:ProductComponent},
-      {path:'customer',component:CustomerComponent}
+      {path:'stock',component:StockComponent}
     ]
   }
 ];
