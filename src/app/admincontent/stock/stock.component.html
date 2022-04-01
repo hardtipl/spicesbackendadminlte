@@ -1,1 +1,51 @@
-<p>customer works!</p>
+<!-- <p>Stock works!</p> -->
+<ng-container>
+    <div class="card-body">
+        <div class="row">
+            <!-- <div class="col-md-6 offset-md-3 col-12"> -->
+
+            <form [formGroup]="stockform" (ngSubmit)="submit()" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Product :</label>
+                    <div class="col-sm-9">
+                        <select formControlName="bestseller" class="form-control">
+                            <option value="">--Select Product--</option>
+                            <option *ngFor="let products of productlisting" value="{{products.id}}">
+                                {{products?.vproductName}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Product Option :</label>
+                    <div class="col-sm-9">
+                        <select formControlName="iproductOption_Id" class="form-control">
+                            <option value="0">--select any--</option>
+                            <option *ngFor="let options of avilableproducoptions" value="{{options.id}}">
+                                {{options.vname}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Product Stock Action :</label>
+                    <div class="col-sm-9">
+                        <select formControlName="instock" class="form-control">
+                            <option value="+">Add</option>
+                            <option value="-">Defect</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Product Qty :</label>
+                    <div class="col-sm-9">
+                        <input type="text" formControlName="fprice" class="form-control"
+                            placeholder="Please Enter Product Price">
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-primary">Add Product</button>
+                </div>
+            </form>
+            <!-- </div> -->
+        </div>
+    </div>
+</ng-container>

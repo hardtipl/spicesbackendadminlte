@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
+import { unsubscriptionofservices } from 'src/app/services/unsubscri.service';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit,OnDestroy {
 productform:any
+subs=new SubSink()
   uploadedingfile: any;
   avilableproducoptions: any;
   avilablebrads:any
+  subscribedservices: Subscription[]=[];
   constructor(private fb:FormBuilder,private product:ProductService) { 
     this.productform=this.fb.group({
     productname:['', [Validators.required]],
@@ -30,14 +35,18 @@ productform:any
   get controlsofall(){
   return this.productform.controls;
 }
+ngOnDestroy() {
+this.subs.unsubscribe();
+  }
 // get f() { return this.productform.controls; }
   ngOnInit(): void {
-    this.product.productoption().subscribe((data:any)=>{
+  this.subs.add(this.product.productoption().subscribe((data:any)=>{
       this.avilableproducoptions=data.Message
-    })
-    this.product.productbrnad().subscribe((data:any)=>{
+    }))
+    this.subs.add(this.product.productbrnad().subscribe((data:any)=>{
       this.avilablebrads=data.Message
-    })
+    }))
+  
   }
   // sendbrnad(brand:any){
   //   console.log()
@@ -79,13 +88,20 @@ productform:any
     sendingdata.append('bestseller', this.productform.value.bestseller)
     sendingdata.append('instock', this.productform.value.instock)
     sendingdata.append('status', this.productform.value.status)
-    console.log(sendingdata);
-    // console.log("angular sending data",this.productform.value);
-    this.product.addproduct(this.productform.value).subscribe((data:any)=>{
-    console.log(data);
-    // alert("resp")
+    sendingdata.append('productimage', this.productform.value.productimage)
+    sendingdata.append('iproductOption_Id', this.productform.value.iproductOption_Id)
+    sendingdata.append('brandID', this.productform.value.brandID),
+    sendingdata.append('fprice', this.productform.value.fprice),
+    sendingdata.append('fdiscountPrice', this.productform.value.fdiscountPrice),
+    sendingdata.append('brandID', this.productform.value.brandID)
     
-  })
+    // console.log(sendingdata);
+    // console.log("angular sending data",this.productform.value);
+    this.product.addproduct(this.productform.value).subscribe((data: any) => {
+      console.log(data);
+      // alert("resp")
+
+    })
     // const productdata
   }
   onSelectFile(data:any){

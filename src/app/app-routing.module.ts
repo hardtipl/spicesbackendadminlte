@@ -10,7 +10,8 @@ const routes: Routes = [
   {
     path:'admin',loadChildren:()=>import('./admincontent/admincontent.module').then(loggedin=>loggedin.AdmincontentModule)
   },
-  { path:'**'   , component: TestComponent  }
+  { path:'**' , redirectTo: 'test', pathMatch: 'full'  },
+   {path:'test',component: TestComponent}
 ];
 
 @NgModule({

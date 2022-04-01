@@ -5,17 +5,15 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class AdminService {
   url=environment.baseurl
   // http://localhost:4500/api
   // url="http://localhost:4500/api/admin/product";
-  // localhost:4500/api/admin/product
+  // http://localhost:4500/api
 
   constructor(public http:HttpClient) { }
-  addproduct(data:any){
-    console.log(data)
-  //  console.log(this.http.post(`${this.url}`,data))
-  return this.http.post(`${this.url}/admin/product`,data)
+  sendlogindata(data:any){
+  return this.http.post(`${this.url}/admin/login`,data)
   }
 
   productoption(){

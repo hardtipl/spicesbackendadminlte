@@ -1,12 +1,17 @@
-.example-container {
+/* .example-container {
   width: 99%;
   height: 100%;
   margin: 10px;
-  /* border: 1px solid #555; */
+  /* border: 1px solid #555; *
 }
 .example-spacer {
   flex: 1 1 auto;
 }
 .navside{
 width: 15%;
-}
+} */
+/* .collapsing {
+  -webkit-transition: none;
+  transition: none;
+  display: none;
+} */
