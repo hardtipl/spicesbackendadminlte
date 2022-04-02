@@ -15,7 +15,6 @@ export class StockComponent implements OnInit ,OnDestroy{
   subs = new SubSink()
   constructor(private fb: FormBuilder, private products: ProductService) {
     this.stockform=this.fb.group({
-      productname:['', [Validators.required]],
       productshortdescription:['', [Validators.required]],
       productlongdescription:['', [Validators.required]],
       bestseller:['1', [Validators.required]],
