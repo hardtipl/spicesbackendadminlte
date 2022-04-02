@@ -4,14 +4,15 @@ import { ProductComponent } from './product/product.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrnadComponent } from './brnad/brnad.component';
 import { StockComponent } from './stock/stock.component';
+import { GauthguardGuard } from '../services/gauthguard.guard';
 
 const routes: Routes = [
   {
     path:'',  component:DashboardComponent,
     children:[
      { path:'brand',component:BrnadComponent},
-      {path:'product',component:ProductComponent},
-      {path:'stock',component:StockComponent}
+      {path:'product',component:ProductComponent,canActivate:[GauthguardGuard]},
+      {path:'stock',component:StockComponent,canActivate:[GauthguardGuard]}
     ]
   }
 ];

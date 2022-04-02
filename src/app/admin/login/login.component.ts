@@ -41,9 +41,12 @@ export class LoginComponent implements OnInit,OnDestroy {
     
    const adminloginsub= this.loginadmin.sendlogindata(val).subscribe((data:any)=>{
       console.log(data)
+      console.log(data.Token)
       this.loginform.reset();
       localStorage.setItem("admintoken",data.Token)
-      this.router.navigate(['/admin']);
+      this.router.navigate(['admin']);
+      console.log("router is not navigated")
+      alert("uter is not na")
     })
     this.subscribedservices.push(adminloginsub);
 }

@@ -40,7 +40,8 @@
               "src/assets/dist/js/adminlte.js",
               "src/assets/plugins/chart.js/Chart.min.js",
               "src/assets/dist/js/demo.js",
-              "src/assets/dist/js/pages/dashboard3.js"
+              "src/assets/dist/js/pages/dashboard3.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
             ]
           },
           "configurations": {

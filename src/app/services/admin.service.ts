@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -24,5 +24,19 @@ export class AdminService {
   }
   productlising(){
     return this.http.get(`${this.url}/admin/product/getall`)
+  }
+  header(){
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Authorization': 'Bearer ' + localStorage.getItem("admintoken")
+
+    };
+
+    console.log(headerDict)
+   return  {
+      headers: new HttpHeaders(headerDict)
+    };
   }
 }

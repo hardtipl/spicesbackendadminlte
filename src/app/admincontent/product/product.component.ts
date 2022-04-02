@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Subject, Subscription, takeUntil } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
-import { unsubscriptionofservices } from 'src/app/services/unsubscri.service';
 import { SubSink } from 'subsink';
 
 @Component({
@@ -35,6 +34,7 @@ subs=new SubSink()
   get controlsofall(){
   return this.productform.controls;
 }
+
 ngOnDestroy() {
 this.subs.unsubscribe();
   }
@@ -42,30 +42,17 @@ this.subs.unsubscribe();
   ngOnInit(): void {
   this.subs.add(this.product.productoption().subscribe((data:any)=>{
       this.avilableproducoptions=data.Message
+    },(error:any)=>{
+      console.log("this is an error",error);
     }))
     this.subs.add(this.product.productbrnad().subscribe((data:any)=>{
       this.avilablebrads=data.Message
+    },(error:any)=>{
+      console.log("this is an error",error);
     }))
   
   }
-  // sendbrnad(brand:any){
-  //   console.log()
-  //   console.log("changein the status",this.productform.value.status)
-  //   this.productform.patchValue({
-  //     brandID:brand.value
-  //   })
-  //   console.log("changein the status 2",this.productform.value.status)
-  // }
-  // productoption(prod_option:any){
-  //   this.productform.patchValue({
-  //     iproductOption_Id:prod_option.value
-  //   })
-  // }
-  // productstatus(prod_status:any){
-  //   this.productform.patchValue({
-  //     status:prod_status.value
-  //   })
-  // }
+ 
   submit(){
     console.log("firstdata postinf directly",this.productform.value)
     // console.log(this.productform.value.producttitle)

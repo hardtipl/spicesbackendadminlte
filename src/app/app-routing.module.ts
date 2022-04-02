@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductComponent } from './admincontent/product/product.component';
+import { GauthguardGuard } from './services/gauthguard.guard';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [

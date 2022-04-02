@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -15,16 +16,36 @@ export class ProductService {
   addproduct(data:any){
     console.log(data)
   //  console.log(this.http.post(`${this.url}`,data))
-  return this.http.post(`${this.url}/admin/product`,data)
+  return this.http.post(`${this.url}/admin/product`,data).pipe(catchError(this.handleError))
   }
 
   productoption(){
-    return this.http.get(`${this.url}/admin/producoptions`)
+    return this.http.get(`${this.url}/admin/producoptions`).pipe(catchError(this.handleError))
   }
   productbrnad(){
-    return this.http.get(`${this.url}/admin/brand/getall`)
+    return this.http.get(`${this.url}/admin/brand/getall`).pipe(catchError(this.handleError))
   }
   productlising(){
-    return this.http.get(`${this.url}/admin/product/getall`)
+    return this.http.get(`${this.url}/admin/product/getall`).pipe(catchError(this.handleError))
+  }
+  private handleError(error: HttpErrorResponse) {
+    if (error.status != null ) {
+      alert("some error occured")
+    return  throwError(
+        error.error);
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+      // alert("fronterror");
+    }
+    //  else {
+    //   // The backend returned an unsuccessful response code.
+    //   // The response body may contain clues as to what went wrong.
+    //   console.error(
+    //     `Backend returned code ${error.status}, body was: `, error.error);
+    //     alert("backend error");
+    // }
+    // Return an observable with a user-facing error message.
+    return throwError(
+      'some error occured');
   }
 }
