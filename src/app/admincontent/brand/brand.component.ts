@@ -8,9 +8,9 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./brand.component.css']
 })
 export class BrandComponent implements OnInit {
-brandform:any
+  brandform:any
   constructor(private fb:FormBuilder,private brand:ProductService) {
-    this.brandform=this.fb.group({
+      this.brandform=this.fb.group({
       brandname:['',[Validators.required]],
       vstatus:['Active',[Validators.required]]
     })
@@ -26,6 +26,6 @@ brandform:any
      vbrandName:this.brandform.value.brandname,
      estatus:this.brandform.value.vstatus
     }
-    this.brand.postbrand(sendbranddata).subscribe((data:any)=>alert("Brand Added"))
+    this.brand.postbranddata(sendbranddata).subscribe((data:any)=>alert("Brand Added"))
   }
 }

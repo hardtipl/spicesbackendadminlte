@@ -34,6 +34,9 @@ export class ProductService {
   postbrand(da:any){
     return this.http.post(`${this.url}/admin/product/getall`,da).pipe(catchError(this.handleError))
   }
+  postbranddata(data:any){
+    return this.http.post(`${this.url}/admin/brand`,data)
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.status != null ) {
       alert("some error occured")
