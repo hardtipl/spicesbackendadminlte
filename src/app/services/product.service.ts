@@ -25,8 +25,14 @@ export class ProductService {
   productbrnad(){
     return this.http.get(`${this.url}/admin/brand/getall`).pipe(catchError(this.handleError))
   }
+  sendingstock(data:any){
+    return this.http.post(`${this.url}/admin/stock/addstock`,data).pipe(catchError(this.handleError))
+  }
   productlising(){
     return this.http.get(`${this.url}/admin/product/getall`).pipe(catchError(this.handleError))
+  }
+  postbrand(da:any){
+    return this.http.post(`${this.url}/admin/product/getall`,da).pipe(catchError(this.handleError))
   }
   private handleError(error: HttpErrorResponse) {
     if (error.status != null ) {

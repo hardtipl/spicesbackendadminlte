@@ -15,9 +15,10 @@ export class StockComponent implements OnInit ,OnDestroy{
   subs = new SubSink()
   constructor(private fb: FormBuilder, private products: ProductService) {
     this.stockform=this.fb.group({
-      productshortdescription:['', [Validators.required]],
-      productlongdescription:['', [Validators.required]],
-      bestseller:['1', [Validators.required]],
+      producid:['', [Validators.required]],
+      iproductOption_Id:['', [Validators.required]],
+      status:['', [Validators.required]],
+      qty:['1', [Validators.required]],
     })
     this.subs.add(this.products.productlising().subscribe((data: any) => {
       this.productlisting = data.Message
@@ -30,6 +31,18 @@ export class StockComponent implements OnInit ,OnDestroy{
   ngOnInit(): void {
   }
   submit() {
+    console.log(this.stockform.value)
+    const sendstock={
+     iproduct_id:this.stockform.value.producid,
+     i_product_option_id:this.stockform.value.iproductOption_Id,
+     iqty:this.stockform.value.qty,
+     adminid:1,
+     status:this.stockform.value.status
+    }
+    this.products.sendingstock(sendstock).subscribe((data:any)=>{
+      alert("data inserted")
+    })
+
 
   }
   ngOnDestroy() {
