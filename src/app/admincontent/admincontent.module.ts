@@ -8,7 +8,9 @@ import { UpdateproductComponent } from './updateproduct/updateproduct.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
 import { BrandComponent } from './brand/brand.component';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -26,7 +28,10 @@ import { BrandComponent } from './brand/brand.component';
     AdmincontentRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule   
     
   ]
 })
