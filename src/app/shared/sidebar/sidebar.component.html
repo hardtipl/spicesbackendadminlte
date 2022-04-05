@@ -87,29 +87,19 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#/admin" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Product
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a  class="nav-link active" routerLink="product">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
-                  <p>Add Product</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a routerLink="updateproduct" class="nav-link">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
-                  <p>Update Product</p>
-                </a>
-              </li>
+        
+          <li>
+            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
+            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                <li class="w-100">
+                    <a routerLink="product" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                </li>
             </ul>
-          </li>
+        </li>
           <li class="nav-item">
             <!-- <a routerLink="updateproduct" class="nav-link"> -->
               <a class="nav-link" routerLink="stock">

@@ -21,3 +21,25 @@
   <!-- <app-sidenav></app-sidenav> -->
   <!-- <app-sidebar></app-sidebar> -->
   <h1>page you are requesting</h1>
+  <div class="container">
+    <button>add new user</button>
+    <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>status</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+         <tr *ngFor="let group of apidata">
+               <td>{{group.name}}</td>
+               <td>{{group.email}}</td>
+               <td>{{group.status}}</td>
+           </tr>
+        </tbody>
+      </table>
+      </div>
+  
+   
