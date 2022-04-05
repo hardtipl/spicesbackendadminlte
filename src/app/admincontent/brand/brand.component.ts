@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
 import { MatSort, Sort } from '@angular/material/sort';
@@ -14,7 +14,9 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 export class BrandComponent implements OnInit {
   brandform:any;
   filtergrid: any=[];
-  displayedColumns: string[] = ['fullName', 'dayitva', 'sangathan', 'kendra','prant','shetra', 'action'];
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  displayedColumns: string[] = ['vbrandName'];
   constructor(private fb:FormBuilder,private brand:ProductService,private _liveAnnouncer: LiveAnnouncer ) {
       this.brandform=this.fb.group({
       brandname:['',[Validators.required]],
@@ -23,9 +25,23 @@ export class BrandComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.brand.getallbrand().subscribe((data:any)=>{
+      
+    // console.log("data",data);
+    this.filtergrid=data.Message
+  
+    console.log( this.filtergrid);
+    this.loaddataint()
+  })
   }
   get controlsofall(){
     return this.brandform.controls;
+  }
+  loaddataint(){
+    this.filtergrid = new MatTableDataSource<any>(this.filtergrid);
+    this.filtergrid.sort = this.sort;
+    this.filtergrid.paginator = this.paginator;
+    console.log("data loaded ",this.filtergrid);
   }
   submit(){
     const sendbranddata={
