@@ -11,11 +11,15 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { EditdialogComponent } from './editdialog/editdialog.component';
+import { DeletedialogComponent } from './deletedialog/deletedialog.component';
 @NgModule({
   declarations: [
     SidebarComponent,
     SidenavComponent,
-    FooterComponent
+    FooterComponent,
+    EditdialogComponent,
+    DeletedialogComponent
   ],
   imports: [
     RouterModule,
@@ -41,6 +45,8 @@ import { RouterModule } from '@angular/router';
     MatTabsModule,
     SidebarComponent,
     SidenavComponent,
+    EditdialogComponent,
+    DeletedialogComponent,
     FooterComponent
   ]
 })

@@ -28,6 +28,7 @@
             <!-- </div> -->
         </div>
     </div>
+    <div class="table responsive">
     <table class="table" mat-table [dataSource]="filtergrid" matSort (matSortChange)="announceSortChange($event)"
         class="mat-elevation-z8">
 
@@ -39,16 +40,16 @@
           <td mat-cell *matCellDef="let element"> {{ element.vbrandName }} </td>
         </ng-container>
 
-                <ng-container matColumnDef="action">
+                <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>
             Action
           </th>
-          <!-- <td mat-cell *matCellDef="let element">
-            <button class="btn btn-primary btn-sm" data-toggle="modal" (click)="passingid(element.userDetailId)"  data-target="#prabadhakmodal" mat-button><i
+          <td mat-cell *matCellDef="let element">
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#brandupdate" (click)="deleteoption(element.id)"  mat-button><i
                 class="fa fa-edit"></i></button>
-            <button class="btn btn-danger btn-sm" mat-button (click)="deletedialog(element.prantId)"><i
+            <button class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#deletemodal" (click)="deleteid(element.id)" mat-button ><i
                 class="fa fa-times"></i></button>
-          </td> -->
+          </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -56,4 +57,43 @@
       <mat-paginator [pageSizeOptions]="[3, 5, 10, 20]" showFirstLastButtons
         aria-label="Select page of periodic elements">
       </mat-paginator>
+    </div>
 </ng-container>
+<app-deletedialog (deleteconfimation)="deleteconfirmcall($event)"></app-deletedialog>
+<app-editdialog (confiramtioncame)="confirmcall($event)"></app-editdialog>
+<div class="modal" tabindex="-1" id="brandupdate" role="dialog">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title">Update Brand</h5>
+              <button type="button" class="close" #closebutton data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="brandform" (ngSubmit)="submitupdate()">
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-3 col-form-label">Brand Name :</label>
+                <div class="col-sm-9">
+                  <input type="text" formControlName="brandname" class="form-control" placeholder="Please Enter Product Price">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-3 col-form-label">Brand Status :</label>
+                <div class="col-sm-9">
+                  <select formControlName="vstatus" class="form-control">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
+              <input type="hidden" formControlName="id" >
+              <div class="card-footer text-center">
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update Brand</button>
+              </div>
+            </form>
+          </div>
+        
+      </div>
+  </div>
+</div>

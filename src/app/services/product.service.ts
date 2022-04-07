@@ -40,6 +40,20 @@ export class ProductService {
   getallbrand(){
     return this.http.get(`${this.url}/admin/brand/getall`).pipe(catchError(this.handleError))
   }
+  singlebrand(id:number|null){
+    return this.http.get(`${this.url}/admin/brand/${id}`).pipe(catchError(this.handleError))
+  }
+  updatebrand(data: any) {
+    const dataupdate = {
+      vbrandName: data.brandname,
+      estatus: data.vstatus
+    }
+    const thisurl = this.http.put(`${this.url}/admin/brand/updatebrand/${data.id}`, dataupdate).pipe(catchError(this.handleError))
+    return thisurl
+  }
+  deletebrand(id:any){
+    return this.http.delete(`${this.url}/admin/brand/${id}`).pipe(catchError(this.handleError))
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.status != null ) {
       alert("some error occured")

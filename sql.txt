@@ -1,0 +1,12 @@
+create procedure procedure_name as
+SELECT * FROM `brand`
+
+
+above is the example to create procedure.
+
+exec procedure_name
+
+Above is example to execute procedure
+
+example to create view 
+create view viewname as SELECT * FROM `brand`

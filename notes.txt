@@ -1,0 +1,11 @@
+node.js is just an javscript which runs on server. it is the runtime built javascript . It uses non blocking model.it is single threded language. networks and the other general operation using/performed in the seperate threds with help of c++.
+
+what is event loop?
+event loop is just is that whenever some event is occure than the process on that result error is pushed in event execution callback. Event is occured than it is added in the event excecution.
+
+usage node js?
+real time web application.
+network application . general appliation .iot application.npm im
+
+what is callback in node js
+node uses the asynchonous quivalent than when the task is complted than callback is callled
