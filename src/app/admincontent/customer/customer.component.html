@@ -1,0 +1,56 @@
+<div class="table responsive">
+    <!-- Start Table -->
+    <table class="table" mat-table [dataSource]="filtergrid" matSort
+        (matSortChange)="announceSortChange($event)" class="mat-elevation-z8">
+        <!-- Customer Name Column -->
+        <ng-container matColumnDef="vfullName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+               Customer Name
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.vfullName }} </td>
+        </ng-container>
+        <!-- Customer Email Column -->
+        <ng-container matColumnDef="vemail">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Customer Email
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.vemail }} </td>
+        </ng-container>
+        <!-- Customer UserName Column -->
+        <ng-container matColumnDef="vuserName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Customer UserName
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.vuserName }} </td>
+        </ng-container>
+        <!-- Customer Contant/Whatsapp Column -->
+        <ng-container matColumnDef="vwhatsappNo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Customer Contant/Whatsapp
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.vwhatsappNo }} </td>
+        </ng-container>
+        <!-- Customer Address Column -->
+        <ng-container matColumnDef="vaddress">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Customer Address
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.vaddress }} </td>
+        </ng-container>
+        <!--  Add/Substract Column -->
+        <!-- <ng-container matColumnDef="Added_substract">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                Add/Substract
+            </th>
+            <td mat-cell *matCellDef="let element"> {{ element.Added_substract }} </td>
+        </ng-container> -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <!-- Ended Table -->
+    <!-- Grid Pagination -->
+    <mat-paginator [pageSizeOptions]="[ 5, 10, 20]" showFirstLastButtons
+        aria-label="Select page of periodic elements">
+    </mat-paginator>
+    <!-- End Grid Pagination -->
+</div>

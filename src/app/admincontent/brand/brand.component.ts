@@ -52,7 +52,7 @@ export class BrandComponent implements OnInit {
     }
     this.brandform.reset()
     this.brand.postbranddata(sendbranddata).subscribe((data: any) => {
-      alert("Brand Added")
+      // alert("Brand Added")
       this.loadbrand()
   })
   }

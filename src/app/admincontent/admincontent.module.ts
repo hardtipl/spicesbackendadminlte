@@ -11,6 +11,8 @@ import { BrandComponent } from './brand/brand.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { OrderComponent } from './order/order.component';
+import { CustomerComponent } from './customer/customer.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     StockComponent,
     UpdateproductComponent,
     BrandComponent,
+    OrderComponent,
+    CustomerComponent,
 
   ],
   imports: [

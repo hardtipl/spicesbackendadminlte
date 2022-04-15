@@ -1,8 +1,8 @@
 <!-- <mat-nav-list> -->
-    <!-- <div class="logo py-4"> -->
-      <!-- <img src="./assets/logo.svg" alt="Company Logo" /> -->
-    <!-- </div> -->
-    <!-- <mat-divider></mat-divider>
+<!-- <div class="logo py-4"> -->
+<!-- <img src="./assets/logo.svg" alt="Company Logo" /> -->
+<!-- </div> -->
+<!-- <mat-divider></mat-divider>
     <h2 matSubheader class="mt-2" routerLink="">APPLICATIONS</h2>
   
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/product">
@@ -24,7 +24,7 @@
     <a mat-list-item> <mat-icon>edit</mat-icon> Link 6 </a>
 </mat-nav-list> -->
 <!-- <div class="wrapper"> -->
-  <!-- Sidebar -
+<!-- Sidebar -
   <nav id="sidebar">
       <div class="sidebar-header">
           <h3>Bootstrap Sidebar</h3>
@@ -77,18 +77,18 @@
 
 
 
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-   
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-        
-          <!-- <li>
+
+        <!-- <li>
             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Product</span> </a>
             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
@@ -99,12 +99,27 @@
                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
                 </li>
             </ul>
+wright when the we want apply some class on the selected or the activated route
+ routerLinkActive="nav-link active"
+
         </li> -->
-        <li class="nav-item menu-open">
-          <a href="#" class="nav-link active">
+
+
+        <!--  <a href="#" target="_self"  class="nav-link active">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
              Product
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+        
+        above code help me to give the togglation in angular
+        -->
+        <li class="nav-item menu-open">
+          <a href="#" target="_self" class="nav-link active">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Product
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -117,6 +132,7 @@
             </li>
           </ul>
         </li>
+
         <li class="nav-item">
           <!-- <a routerLink="updateproduct" class="nav-link"> -->
           <a class="nav-link" routerLink="stock">
@@ -137,10 +153,30 @@
             </p>
           </a>
         </li>
-        
-        </ul>
-        </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+        <li class="nav-item">
+          <!-- <a routerLink="updateproduct" class="nav-link"> -->
+          <a class="nav-link" routerLink="orders">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Orders
+              <!--  <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <!-- <a routerLink="updateproduct" class="nav-link"> -->
+          <a class="nav-link" routerLink="customer">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              Customer
+              <!--  <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

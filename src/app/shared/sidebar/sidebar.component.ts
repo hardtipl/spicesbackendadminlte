@@ -12,6 +12,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
   toggleSidebar() {
-    // this.toggleSidebarForMe.emit();
+    this.navbarCollapsed=false
   }
 }

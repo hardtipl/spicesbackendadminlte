@@ -54,9 +54,12 @@ export class ProductService {
   deletebrand(id:any){
     return this.http.delete(`${this.url}/admin/brand/${id}`).pipe(catchError(this.handleError))
   }
+  getstock(){
+    return this.http.get(`${this.url}/admin/stock/getstock`).pipe(catchError(this.handleError))
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.status != null ) {
-      alert("some error occured")
+      // alert("some error occured")
     return  throwError(
         error.error);
       // A client-side or network error occurred. Handle it accordingly.

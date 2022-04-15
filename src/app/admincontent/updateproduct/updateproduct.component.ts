@@ -72,7 +72,7 @@ export class UpdateproductComponent implements OnInit {
     console.log("angular sending data",this.productform.value);
     this.product.addproduct(this.productform.value).subscribe((data:any)=>{
     console.log(data);
-    alert("resp")
+    // alert("resp")
     
   })
     // const productdata

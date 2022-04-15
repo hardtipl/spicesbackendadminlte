@@ -10,3 +10,43 @@ Above is example to execute procedure
 
 example to create view 
 create view viewname as SELECT * FROM `brand`
+
+SELECT
+product_order.dorderDate,
+    product_order.id,
+    fgrandTotal,
+    iCustomerId,
+    c.vfullName as customer_name,
+    efinalStatus,
+    eshippingstatus,
+    epaymentstatus,
+    vbillingAddress,
+    vcity,
+    vstate,
+    vcountry,
+    vzipcode,
+    vshippingAddress,
+    vsCity,
+    vsState,
+    vsCountry,
+    vsZipcode
+FROM
+    product_order
+    LEFT JOIN customer as c 
+    on product_order.iCustomerId=c.id
+    WHERE date(product_order.dorderDate)=CURRENT_DATE
+    ORDER BY product_order.dorderDate DESC
+    LIMIT 5;
+
+
+BEGIN
+INSERT INTO shipment_log(order_id,shipmentstatus,dcreated_date,Admin_id)VALUES(orderid,shipment_enter_status,CURRENT_DATE,responsible_admin);
+UPDATE product_order SET epaymentstatus=pay_status WHERE id=order_id;
+END
+
+'InProgress',
+'Payment Received',
+'Dispatched',
+'Delivered',
+'Cancelled',
+'Dispute'

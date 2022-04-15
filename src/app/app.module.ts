@@ -9,6 +9,7 @@ import { TestComponent } from './test/test.component';
 // import { ProductComponent } from './admincontent/product/product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 // import { BrandComponent } from './brand/brand.component';
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

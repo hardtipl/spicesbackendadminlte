@@ -14,7 +14,7 @@ export class SidenavComponent  {
 
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
-    alert("clicked")
+    // alert("clicked")
 //     if( this.sideBarOpen != ""){
 // console.log("hiding")
 //       this.sideBarOpen = "";
