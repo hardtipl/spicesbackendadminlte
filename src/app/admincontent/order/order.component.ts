@@ -20,11 +20,13 @@ export class OrderComponent implements OnInit {
   @ViewChild('closebutton') closebutton: any;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  temp_order_pass: any;
   constructor(private order: OrderService, private fb: FormBuilder, private _liveAnnouncer: LiveAnnouncer) {
     this.orderupdatedata = this.fb.group({
       orderstatus: ['', [Validators.required]],
       ordershipping: ['', [Validators.required]],
       orderpayment: ['', [Validators.required]]
+
     });
   }
   announceSortChange(sortState: Sort) {
@@ -39,6 +41,7 @@ export class OrderComponent implements OnInit {
   }
   loaddatavarialbe() {
     this.subs.add(this.order.customerorderlisting().subscribe((data: any) => {
+     console.log(data)
       this.filtergrid = data.Message[0]
       this.loaddataint()
     })
@@ -57,13 +60,33 @@ export class OrderComponent implements OnInit {
     alert(data)
   }
   passingid(data: any) {
-    // alert(data)
+    alert(data)
+    this.temp_order_pass=data
+    console.log("change",this.filtergrid.filteredData)
+    const resultun=this.filtergrid.filteredData.find((e:any)=>{
+      // console.log("camein tne ",e.orderid)
+      // console.log("cameine ",this.temp_order_pass)
+      e.orderid==this.temp_order_pass
+    } )
+    console.log("hereih ",resultun);
+    // this.filtergrid.filter((e:any))
+    // this.persons =  this.personService.getPersons().filter(x => x.id == this.personId)[0];
+    // this.persons =  this.personService.getPersons().find(x => x.id == this.personId);
+    // const result = inventory.find( ({ name }) => name === 'cherries' );
+    console.log("change needed to be done",this.filtergrid.filteredData?.[data])
       
   }
   submit() {
     this.closebutton.nativeElement.click();
+    const send={
+      PaymentStatus: "PENDING",
+      ShippmentStatus: "INPROGRESS",
+      SendednByAdmin: 1,
+      Comments: "some comment"
+    }
   }
   get controlsofall() {
     return this.orderupdatedata.controls;
   }
+  
 }
