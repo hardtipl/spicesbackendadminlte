@@ -13,19 +13,19 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { OrderComponent } from './order/order.component';
 import { CustomerComponent } from './customer/customer.component';
+import { DefaultdashboardComponent } from '../defaultdashboard/defaultdashboard.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     ProductComponent,
-    
     StockComponent,
     UpdateproductComponent,
     BrandComponent,
     OrderComponent,
     CustomerComponent,
-
+    DefaultdashboardComponent
   ],
   imports: [
     CommonModule,

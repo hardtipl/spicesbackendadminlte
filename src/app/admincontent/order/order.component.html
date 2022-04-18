@@ -1,7 +1,7 @@
 <div class="table responsive">
     <!-- Start Table -->
     <label for="">Enter Text</label>
-    <input type="text" (change)="searchin($event.target)">
+    <input type="text" (keyup)="searchin($event.target)">
     <table class="table" mat-table [dataSource]="filtergrid" matSort (matSortChange)="announceSortChange($event)"
         class="mat-elevation-z8">
         <!-- Order Date Column -->
@@ -65,11 +65,17 @@
             <th mat-header-cell *matHeaderCellDef>
                 Action
             </th>
-            <td mat-cell *matCellDef="let element">
+            <td mat-cell *matCellDef="let element" style="flex: 1;">
                 <button class="btn btn-primary btn-sm" data-toggle="modal" (click)="passingid(element.orderid)"
                     data-target="#orderupdate"><i class="fa fa-edit"></i></button>
-                <button class="btn btn-danger btn-sm" (click)="deletedialog(element.orderid)"><i
-                        class="fa fa-times"></i></button>
+                <!-- <button class="btn btn-danger btn-sm" (click)="deletedialog(element.orderid)"><i
+                        class="fa fa-times"></i></button> -->
+                <button class="btn btn-info btn-sm" data-toggle="modal" (click)="passingid(element.orderid)"
+                    data-target="#paymentlog"><i class="fa fa-rupee-sign fa-lg"></i></button>
+                <button class="btn btn-info btn-sm" data-toggle="modal" (click)="passingid(element.orderid)"
+                    data-target="#shipmentlog"><i class="fa fa-truck fa-lg"></i></button>
+                <button class="btn btn-info btn-sm" data-toggle="modal" (click)="passingid(element.orderid)"
+                    data-target="#orderlog"><i class="fa fa-eye-slash fa-lg"></i></button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -91,9 +97,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="orderupdatedata" (ngSubmit)="submit()">
+                <form [formGroup]="orderupdatedata" (ngSubmit)="orderthing()">
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Product Order :</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Product Order Status:</label>
                         <div class="col-sm-9">
                             <select formControlName="orderstatus" class="form-control">
                                 <option value="Dispatched">Dispatched</option>
@@ -107,7 +113,7 @@
                     </div>
                     <!-- Product Order Status -->
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Product Order :</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Product Shipping Order Status:</label>
                         <div class="col-sm-9">
                             <select formControlName="ordershipping" class="form-control">
                                 <option value="INPROGRESS">In Progress</option>
@@ -119,7 +125,7 @@
                     </div>
                     <!-- Product Shipping Status -->
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Product Order :</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Product Payment Order Status:</label>
                         <div class="col-sm-9">
                             <select formControlName="orderpayment" class="form-control">
                                 <option value="PENDING">Pending</option>
@@ -128,14 +134,145 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Product Order Comment :</label>
+                        <div class="col-sm-9">
+                            <textarea type="text" formControlName="ordercomment" class="form-control"
+                                placeholder="Please Enter Product Order Comment"></textarea>
+                        </div>
+                    </div>
                     <!-- Product Payment Status -->
                     <div class="col-sm-9">
-                        <button type="button" class="btn btn-primary">Update Order</button>
+                        <button type="submit" class="btn btn-primary">Update Order</button>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" id="paymentlog" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Payment Log</h5>
+                <button type="button" class="close" #closebutton data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" *ngFor="let payment of payment">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Payment Status:</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.paymentstatus}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Payment Created Date:</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.dcreated_date}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Admin Name:</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.vadminName}}</label>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- {{payment |json}} -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" id="orderlog" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Order Log</h5>
+                <button type="button" class="close" #closebutton data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" *ngFor="let payment of orderm">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Order Status:</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.estatus}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Order Change Date:</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.dcreatedDate}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Order Comment :</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.tcomment}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Admin Name:</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.vadminName}}</label>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- {{payment |json}} -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" id="shipmentlog" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Shipment Log</h5>
+                <button type="button" class="close" #closebutton data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row" *ngFor="let payment of shipment">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Shipment Status:</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.shipmentstatus}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Shipment Created Date:</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.dcreated_date}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Admin Name:</label>
+                        <div class="col-sm-9">
+                            <label>{{payment?.vadminName}}</label>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>
